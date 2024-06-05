@@ -6,8 +6,8 @@ const addit=async (req,res)=>{
     const it =new itModel({
         image:image_filename,
         name:req.body.name,
-        ratingstars: req.body.ratingstars, // Assuming you receive this value from the client
-           ratingcount: req.body.ratingcount, // Assuming you receive this value from the client
+        ratingstars: req.body.ratingstars, 
+           ratingcount: req.body.ratingcount, 
         priceCents:req.body.priceCents
     })
     try{
