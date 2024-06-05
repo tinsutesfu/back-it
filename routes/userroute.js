@@ -5,8 +5,8 @@ import { registeruser} from '../controllers/usercontroller.js';
 
 const userrouter=express.Router();
 
-userrouter.get('/register',registeruser);
-userrouter.post('/login',registeruser);
+userrouter.post('/register',registeruser);
+userrouter.post('/login',);
 
 
 

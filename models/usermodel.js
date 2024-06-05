@@ -7,6 +7,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    email:{
+        type:String,
+        require:true
+    },
     cartdata: {
         type: Object,
         default: {}
@@ -14,9 +18,9 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
-    refreshToken: [String]
-},{minimize:false});
+    }
+    
+});
 
 const usermodel =mongoose.models.user || mongoose.model('User', userSchema);
 export default usermodel;
