@@ -6,15 +6,9 @@ const addit=async (req,res)=>{
     const it =new itModel({
         image:image_filename,
         name:req.body.name,
-<<<<<<< HEAD
-        rating: {
-            stars:req.body.rating.stars,
-            count:req.body. rating.count,
-        },
-=======
+
         ratingstars: req.body.ratingstars, 
            ratingcount: req.body.ratingcount, 
->>>>>>> debd50c82f6e4536f242c84b371216b145e24cc7
         priceCents:req.body.priceCents
     })
     try{

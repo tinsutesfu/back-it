@@ -22,11 +22,7 @@
     "multer": "^1.4.5-lts.1",
     "stripe": "^15.7.0",
     "uuid": "^9.0.1",
-<<<<<<< HEAD
-    "validater": "^1.0.5"
-=======
     "validator": "^13.12.0"
->>>>>>> debd50c82f6e4536f242c84b371216b145e24cc7
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
