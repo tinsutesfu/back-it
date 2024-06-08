@@ -38,7 +38,7 @@ const registeruser = async (req, res) => {
     res.status(201).json({ success: `New user ${user} created!`, token });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ success: false, message: err.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
