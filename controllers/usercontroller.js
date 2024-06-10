@@ -56,7 +56,8 @@ const handlelogin=async(req,res)=>{
     res.status(201).json({ success:true, token });
 } catch (error){
   console.log(error);
-  res.json({success:true,message:'error'})
+  res.json({success:false,message:'error'})
 }
 }
 export { registeruser,handlelogin };
+ 
