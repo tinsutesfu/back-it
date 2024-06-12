@@ -50,7 +50,7 @@ const handlelogin=async(req,res)=>{
     if (!foundUser) return res.sendStatus(401); //Unauthorized 
     const match = await bcrypt.compare(pwd, foundUser.password);
     if (!match) {
-      return res.json({success:false,message:'invalid credentials'})
+      return res.sendStatus(401);
     };
     const token = createToken(foundUser._id);
     res.status(201).json({ success:true, token });
