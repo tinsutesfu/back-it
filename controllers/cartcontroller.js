@@ -4,10 +4,10 @@ const addtocart=async(req,res)=>{
     try {
         let userdata=await usermodel.findById(req.body.userId);
         let cartdata=userdata.cartdata;
-        if (!cartdata[req.body.itemId]) {
-            cartdata[req.body.itemId]=1;
+        if (!cartdata[req.body.productId]) {
+            cartdata[req.body.productId]=1;
         } else {
-            cartdata[req.body.itemId]+=1;
+            cartdata[req.body.productId]+=1;
         }
         await usermodel.findByIdAndUpdate(req.body.userId,{cartdata});
         res.json({success:true,message:'add to cart'});
@@ -17,12 +17,13 @@ const addtocart=async(req,res)=>{
     }
 }
 
+
 const removecart=async(req,res)=>{
     try {
         let userdata=await usermodel.findById(req.body.userId);
         let cartdata=userdata.cartdata;
-        if (cartdata[req.body.itemId]>0) {
-            cartdata[req.body.itemId]-=1;
+        if (cartdata[req.body.productId]>0) {
+            cartdata[req.body.productId]-=1;
         } 
         await usermodel.findByIdAndUpdate(req.body.userId,{cartdata});
         res.json({success:true,message:'remove from cart'});
