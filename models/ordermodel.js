@@ -7,7 +7,8 @@ const orderschema=new mongoose.Schema({
     address:{type:Object,required:true},
     status:{type:String,default:'order processing'},
     date:{type:Date,default:Date.now()},
-    payment:{type:Boolean,default:false}
+    deliveryId:{type:String,required:true},
+    payment:{type:Boolean,default:false }
 });
 
 const ordermodel =mongoose.models.order || mongoose.model('order', orderschema);
