@@ -62,5 +62,14 @@ try {
 }
 }
 
+const orderstatus=async(req,res)=>{
+  try {
+    await ordermodel.findByIdAndUpdate(req.body.orderId,{status:req.body.status});
+    res.json({success:true,message:'status updated'})
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false, message: 'Error' });
+  }
+}
 
-export { placeorder, userorder,listorder };
+export { placeorder, userorder,listorder ,orderstatus};
