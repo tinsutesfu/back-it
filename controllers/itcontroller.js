@@ -20,6 +20,51 @@ const addit=async (req,res)=>{
     }
 
 };
+
+
+const addrating  =async (req, res) => {
+    const { productId, rating } = req.body;
+    const userId = req.body.userId;
+    if (!productId || !rating) {
+      return res.json({ success: false, message: 'Missing required data' });
+    }
+  
+    try {
+      const it = await itModel.findById(productId);
+      if (!it) {
+        return res.json({ success: false, message: 'Product not found' });
+      }
+  
+      // Check if user has already rated this product
+      const existingRating = it.userRatings.find(
+        (rating) => rating.userId.toString() === userId// Assuming you have user authentication in place
+      );
+  
+      if (existingRating) {
+        return res.json({ success: false, message: 'You have already rated this product' });
+      }
+  
+      // Update user ratings array
+      it.userRatings.push({
+        userId, // Assuming you have user authentication and can access user ID
+        rating,
+      });
+  
+      // Update overall rating and count (consider weighted average for overall rating)
+      const totalRatings = it.userRatings.length;
+      const totalRating = it.userRatings.reduce((acc, rating) => acc + rating.rating, 0);
+      it.ratingstars = totalRating / totalRatings || 0; // Handle potential division by zero
+      it.ratingcount = totalRatings;
+  
+      await it.save();
+      res.json({ success: true, message: 'Your rating has been submitted!' });
+    } catch (error) {
+      console.error(error);
+      res.json({ success: false, message: 'An error occurred. Please try again later.' });
+    }
+  }
+
+
 const itlist=async (req,res)=>{
     try{
         const its=await itModel.find({});
@@ -42,4 +87,4 @@ const removeit=async (req,res)=>{
     }
 }
 
-export {addit,itlist,removeit };
+export {addit,itlist,removeit,addrating };
