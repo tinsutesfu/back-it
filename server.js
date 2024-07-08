@@ -7,7 +7,7 @@ import 'dotenv/config';
 import cartrouter from './routes/cartrouter.js';
 import orderrouter from './routes/orderroute.js';
 const app=express();
-const port =3500;
+const port =process.env.PORT || 3500;
 app.use(express.json());
 app.use(cors());
 
