@@ -9,7 +9,14 @@ import orderrouter from './routes/orderroute.js';
 const app=express();
 const port =process.env.PORT || 3500;
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://front-it-solution.onrender.com', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 
 connectDB();
