@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-let storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, path.join(__dirname, '../../amazon/public/images/uploads'));
     },
@@ -22,7 +22,7 @@ let storage = multer.diskStorage({
 
 
 
-   storage =multer.diskStorage({
+  const store =multer.diskStorage({
     destination:'uploads',
     filename:(req,File,cb)=>{
         return cb(null,`${Date.now()}${File.originalname}`)
@@ -33,7 +33,9 @@ let storage = multer.diskStorage({
   
 
 const upload=multer({storage:storage});
+const uploads=multer({storage:store});
 itrouter.post('/add',upload.single('image'),addit);
+itrouter.post('/add',uploads.single('image'),addit);
 itrouter.post('/rating',verifyJWT, addrating);
 itrouter.get('/list',itlist);
 itrouter.post('/remove',removeit);
