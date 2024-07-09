@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 
   const store =multer.diskStorage({
-    destination:'uploads',
+    destination:'upload',
     filename:(req,File,cb)=>{
         return cb(null,`${Date.now()}${File.originalname}`)
     }
