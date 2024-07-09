@@ -19,7 +19,7 @@ connectDB();
 
 app.use('/api/it',itrouter);
 app.use('/images',express.static('uploads'))
-app.use('/images',express.static('upload'))
+
 app.use('/api/user',userrouter);
 app.use('/api/cart',cartrouter);
 app.use('/api/place',orderrouter);

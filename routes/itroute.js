@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 const upload=multer({storage:storage});
 const uploads=multer({storage:store});
 itrouter.post('/add',upload.single('image'),addit);
-itrouter.post('/add',uploads.single('image'),addit);
+
 itrouter.post('/rating',verifyJWT, addrating);
 itrouter.get('/list',itlist);
 itrouter.post('/remove',removeit);
