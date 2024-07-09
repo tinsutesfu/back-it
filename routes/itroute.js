@@ -11,14 +11,25 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-const storage = multer.diskStorage({
+let storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.join(__dirname, '../../amazon/public/uploads'));
+      cb(null, path.join(__dirname, '../../amazon/public/images/uploads'));
     },
     filename: (req, file, cb) => {
       cb(null, `${Date.now()}${file.originalname}`);
     }
   });
+
+
+
+   storage =multer.diskStorage({
+    destination:'uploads',
+    filename:(req,File,cb)=>{
+        return cb(null,`${Date.now()}${File.originalname}`)
+    }
+});
+
+
   
 
 const upload=multer({storage:storage});
