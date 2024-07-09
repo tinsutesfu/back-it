@@ -21,14 +21,18 @@ const storage = multer.diskStorage({
   });
 
 
-
-  const store =multer.diskStorage({
-    destination:'uploads',
-    filename:(req,File,cb)=>{
-        return cb(null,`${Date.now()}${File.originalname}`)
+const store = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, path.join(__dirname, '../../admin/public/images/uploads'));
+    },
+    filename: (req, file, cb) => {
+      cb(null, `${Date.now()}${file.originalname}`);
     }
-});
+  });
 
+
+
+ 
 
   
 
